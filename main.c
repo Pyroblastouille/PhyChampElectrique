@@ -37,18 +37,20 @@ int main()
     SDL_SetRenderDrawColor(screenRender, 255, 255,255, SDL_ALPHA_TRANSPARENT);
 
     //Fais des trucs
-        gfx_draw_line(screenRender, 50, 50, 75, 50);
-        gfx_draw_line(screenRender, 50, 50, 72, 62);
-        gfx_draw_line(screenRender, 50, 50, 62, 72);
-        gfx_draw_line(screenRender, 50, 50, 50, 75);
-        gfx_draw_line(screenRender, 50, 50, 38, 72);
-        gfx_draw_line(screenRender, 50, 50, 28, 62);
-        gfx_draw_line(screenRender, 50, 50, 25, 50);
-        gfx_draw_line(screenRender, 50, 50, 28, 38);
-        gfx_draw_line(screenRender, 50, 50, 37, 28);
-        gfx_draw_line(screenRender, 50, 50, 50, 25);
-        gfx_draw_line(screenRender, 50, 50, 62, 28);
-        gfx_draw_line(screenRender, 50, 50, 72, 37);
+    gfx_draw_line(screenRender, 50, 50, 75, 50);
+    gfx_draw_line(screenRender, 50, 50, 72, 62);
+    gfx_draw_line(screenRender, 50, 50, 62, 72);
+    gfx_draw_line(screenRender, 50, 50, 50, 75);
+    gfx_draw_line(screenRender, 50, 50, 38, 72);
+    gfx_draw_line(screenRender, 50, 50, 28, 62);
+    gfx_draw_line(screenRender, 50, 50, 25, 50);
+    gfx_draw_line(screenRender, 50, 50, 28, 38);
+    gfx_draw_line(screenRender, 50, 50, 37, 28);
+    gfx_draw_line(screenRender, 50, 50, 50, 25);
+    gfx_draw_line(screenRender, 50, 50, 62, 28);
+    gfx_draw_line(screenRender, 50, 50, 72, 37);
+    
+    gfx_draw_circle(screenRender,50,50,25);
 
     SDL_RenderPresent(screenRender);
 

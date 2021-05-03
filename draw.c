@@ -7,7 +7,7 @@ void gfx_draw_circle(SDL_Renderer *render, int xc, int yc, int r)
     int x = 0;
     int y = r;
     int d = r - 1;
-    while (y <= x)
+    while (y >= x)
     {
         SDL_RenderDrawPoint(render, xc + x, yc + y); //2eme octant
         SDL_RenderDrawPoint(render, xc + y, yc + x); //1er octant
@@ -41,14 +41,12 @@ void gfx_draw_line(SDL_Renderer *render, int x0, int y0, int x1, int y1)
     int dy = y1 - y0;
     int dx = x1 - x0;
     int m_dx = x0 - x1;
-
     if (dy >= 0)//Octants supérieurs
     {
         if (dy <= dx) //octant 1
         {
             int a = 2 * dy;
             int e = 0;
-
             int y = y0;
             for (int x = x0; x < x1; x++)
             {
@@ -65,15 +63,11 @@ void gfx_draw_line(SDL_Renderer *render, int x0, int y0, int x1, int y1)
         {
             int a = 2 * dx;
             int e = 0;
-
             int x = x0;
             for (int y = y0; y < y1; y++)
             {
-
                 SDL_RenderDrawPoint(render,x, y);
-
                 e += a;
-
                 if (e >= dy)
                 {
                     x += 1;
