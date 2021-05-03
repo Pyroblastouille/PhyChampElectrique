@@ -1,9 +1,5 @@
 #define WIN_WIDTH 100
 #define WIN_HEIGHT 100
-#define FPS 1
-#define FRAME_DELAY_IN_MS (1000.0/FPS)
-#define FRAME_DELAY_IN_SEC (1.0/FPS)
-#define TIME_MULTIPLIER (100)
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -21,7 +17,6 @@ SDL_Renderer *screenRender = NULL;
 
 SDL_Event event;
 
-
 int main()
 {
 
@@ -33,20 +28,32 @@ int main()
     screenRender = SDL_GetRenderer(win);
     SDL_GetClipRect(screenSurface, screenRect);
 
+    SDL_RenderClear(screenRender);
+    //met la couleur de l'arrière plan à noir
+    SDL_SetRenderDrawColor(screenRender, 0, 0, 0, SDL_ALPHA_TRANSPARENT);
+    SDL_RenderFillRect(screenRender, NULL);
 
+
+    SDL_SetRenderDrawColor(screenRender, 255, 255,255, SDL_ALPHA_TRANSPARENT);
+
+    //Fais des trucs
+        gfx_draw_line(screenRender, 50, 50, 75, 50);
+        gfx_draw_line(screenRender, 50, 50, 72, 62);
+        gfx_draw_line(screenRender, 50, 50, 62, 72);
+        gfx_draw_line(screenRender, 50, 50, 50, 75);
+        gfx_draw_line(screenRender, 50, 50, 38, 72);
+        gfx_draw_line(screenRender, 50, 50, 28, 62);
+        gfx_draw_line(screenRender, 50, 50, 25, 50);
+        gfx_draw_line(screenRender, 50, 50, 28, 38);
+        gfx_draw_line(screenRender, 50, 50, 37, 28);
+        gfx_draw_line(screenRender, 50, 50, 50, 25);
+        gfx_draw_line(screenRender, 50, 50, 62, 28);
+        gfx_draw_line(screenRender, 50, 50, 72, 37);
+
+    SDL_RenderPresent(screenRender);
 
     while (running)
     {
-        SDL_Delay(FRAME_DELAY_IN_MS);
-        SDL_RenderClear(screenRender);
-        //met la couleur de l'arrière plan à noir
-        SDL_SetRenderDrawColor(screenRender, 0, 0, 0, SDL_ALPHA_TRANSPARENT);
-        SDL_RenderFillRect(screenRender,NULL);
-
-        //Fais des trucs
-        gfx_draw_line(screenRender,50,50,75,75);
-
-        SDL_RenderPresent(screenRender);
         while (SDL_PollEvent(&event))
         {
             switch (event.type)
@@ -72,5 +79,4 @@ int main()
     SDL_FreeSurface(screenSurface);
     SDL_Quit();
     return 0;
-    
 }
