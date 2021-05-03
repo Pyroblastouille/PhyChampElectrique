@@ -11,6 +11,7 @@
 
 #include "vector.h"
 #include "charge.h"
+#include "draw.h"
 #include <time.h>
 
 SDL_Window *win = NULL;
@@ -48,7 +49,7 @@ int main()
         SDL_RenderFillRect(screenRender,NULL);
 
         //Fais des trucs
-        gfx_draw_line(50,50,75,75);
+        gfx_draw_line(screenRender,50,50,75,75);
 
         SDL_RenderPresent(screenRender);
         while (SDL_PollEvent(&event))
