@@ -18,8 +18,7 @@ void gfx_draw_circle(SDL_Renderer* render, int x,int y,int r){
 void gfx_draw_line(SDL_Renderer* render,int x0,int y0,int x1,int y1){
     float dy = y1-y0;
     float dx = x1-x0;
-    float m_dx = x0-x1;
-    int a,e,y;
+    int a = 0,e = 0,y = 0;
 
     if(dy >= 0){
         if(dy <= dx){

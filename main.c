@@ -28,16 +28,11 @@ int main()
     //Déclaration de la fenêtre SDL
     srand(0);
     int running = 1;
-    float elapsed = FRAME_DELAY_IN_SEC * TIME_MULTIPLIER;
-    Vector winCenter;
     win = SDL_CreateWindow("Champ Electriques", 700, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, 0);
     screenSurface = SDL_GetWindowSurface(win);
     screenRender = SDL_GetRenderer(win);
     SDL_GetClipRect(screenSurface, screenRect);
 
-    //Obtiens le centre de la fenêtre
-    winCenter.x = WIN_WIDTH/2.0;
-    winCenter.y = WIN_HEIGHT/2.0;
 
 
     while (running)

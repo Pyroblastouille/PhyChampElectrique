@@ -15,7 +15,7 @@ home : $(SRCS) $(HDRS) $(OBJS)
 	rm -f $(OBJS)
 
 %.o: %.c $(HDRS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(CC) -c -o $@ $<
 
 clean:
 	rm -f $(EXEC) $(OBJS)
