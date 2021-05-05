@@ -2,7 +2,7 @@
 #define DRAW_C
 #include "draw.h"
 
-void gfx_draw_circle(SDL_Renderer* render, int x,int y,int r){
+void gfx_draw_circle(SDL_Renderer* render, int x, int y, int r){
     // (R- 1/2)² <= (x-xc)²+(y-yc)² < (R+1/2)²
 
     
@@ -13,7 +13,6 @@ void gfx_draw_circle(SDL_Renderer* render, int x,int y,int r){
     //regle 2 : On est donc [90°;45°] <=> 2eme octant
 
 }
-
 
 void gfx_draw_line(SDL_Renderer* render,int x0,int y0,int x1,int y1){
     float dy = y1-y0;

@@ -1,6 +1,5 @@
 CC := gcc
-
-CFLAGS := `sdl2-config --libs --cflags` -ggdb3 -O0 --std=c99 -Wall -lm -lSDL2_gfx
+CFLAGS := --std=c99 -Wall -Wextra -lm -lSDL2 -ISDL2
 HDRS := vector.h draw.h charge.h
 
 SRCS := main.c vector.c draw.c charge.c
