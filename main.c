@@ -11,8 +11,6 @@
 #include <time.h>
 
 SDL_Window *win = NULL;
-SDL_Surface *screenSurface = NULL;
-SDL_Rect *screenRect = NULL;
 SDL_Renderer *screenRender = NULL;
 
 SDL_Event event;
@@ -24,9 +22,7 @@ int main()
     srand(0);
     int running = 1;
     win = SDL_CreateWindow("Champ Electriques", 700, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, 0);
-    screenSurface = SDL_GetWindowSurface(win);
-    screenRender = SDL_GetRenderer(win);
-    SDL_GetClipRect(screenSurface, screenRect);
+    screenRender = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED);
 
     SDL_RenderClear(screenRender);
     //met la couleur de l'arrière plan à noir
@@ -78,7 +74,6 @@ int main()
             }
         }
     }
-    SDL_FreeSurface(screenSurface);
     SDL_Quit();
     return 0;
 }
