@@ -1,13 +1,14 @@
-#define WIN_WIDTH 100
-#define WIN_HEIGHT 100
+
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_timer.h>
 
+#include "main.h"
 #include "vector.h"
 #include "charge.h"
 #include "draw.h"
+#include "utils.h"
 #include <time.h>
 
 SDL_Window *win = NULL;
@@ -17,6 +18,11 @@ SDL_Event event;
 
 int main()
 {
+    charge_t charges[2];
+    charges[0].pos = vec_createVectorXY(50,50);
+    charges[0].q = 1;
+    charges[1].pos= vec_createVectorXY(150,150);
+    charges[1].q = -1;
 
     //Déclaration de la fenêtre SDL
     srand(0);
@@ -32,21 +38,8 @@ int main()
 
     SDL_SetRenderDrawColor(screenRender, 255, 255,255, SDL_ALPHA_TRANSPARENT);
 
-    //Fais des trucs
-    gfx_draw_line(screenRender, 50, 50, 75, 50);
-    gfx_draw_line(screenRender, 50, 50, 72, 62);
-    gfx_draw_line(screenRender, 50, 50, 62, 72);
-    gfx_draw_line(screenRender, 50, 50, 50, 75);
-    gfx_draw_line(screenRender, 50, 50, 38, 72);
-    gfx_draw_line(screenRender, 50, 50, 28, 62);
-    gfx_draw_line(screenRender, 50, 50, 25, 50);
-    gfx_draw_line(screenRender, 50, 50, 28, 38);
-    gfx_draw_line(screenRender, 50, 50, 37, 28);
-    gfx_draw_line(screenRender, 50, 50, 50, 25);
-    gfx_draw_line(screenRender, 50, 50, 62, 28);
-    gfx_draw_line(screenRender, 50, 50, 72, 37);
-    
-    gfx_draw_circle(screenRender,50,50,25);
+    gfx_draw_circle(screenRender,100,100,50);
+    draw_charges(screenRender,charges,2,0,0,200,200);
 
     SDL_RenderPresent(screenRender);
 

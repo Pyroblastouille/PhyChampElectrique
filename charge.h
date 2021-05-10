@@ -29,14 +29,14 @@ double eps, Vector *e);
 // starting from pos0.
 // Returns false if pos0 is not a valid position
 // (for example if pos0 is too close to a charge).
-static bool draw_field_line(struct gfx_context_t *ctxt, charge_t *charges,
+static bool draw_field_line(SDL_Renderer *ctxt, charge_t *charges,
 int num_charges, double dx, Vector pos0, double x0,
 double x1, double y0, double y1);
 
 // Draw all the charges
 // A circle with minus sign for negative charges
 // A circle with a plus sign for positive charges
-static void draw_charges(struct gfx_context_t *context, charge_t *charges,
+void draw_charges(SDL_Renderer *context, charge_t *charges,
 int num_charges, double x0, double x1, double y0, double y1);
 
 
