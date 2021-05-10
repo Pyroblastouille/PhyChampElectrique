@@ -21,7 +21,7 @@ int main()
     charge_t charges[2];
     charges[0].pos = vec_createVectorXY(50,50);
     charges[0].q = 1;
-    charges[1].pos= vec_createVectorXY(150,150);
+    charges[1].pos= vec_createVectorXY(600,350);
     charges[1].q = -1;
 
     //Déclaration de la fenêtre SDL
@@ -38,7 +38,6 @@ int main()
 
     SDL_SetRenderDrawColor(screenRender, 255, 255,255, SDL_ALPHA_TRANSPARENT);
 
-    gfx_draw_circle(screenRender,100,100,50);
     draw_charges(screenRender,charges,2,0,0,200,200);
 
     SDL_RenderPresent(screenRender);
