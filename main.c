@@ -18,8 +18,10 @@ SDL_Renderer *screenRender = NULL;
 SDL_Event event;
 
 int main()
-{
-    charge_t charges[2];
+{   
+    double spacing = 0.01;
+    int num_charges = 2;
+    charge_t charges[num_charges];
     charges[0].pos = vec_createVectorXY(50,50);
     charges[0].q = 1;
     charges[1].pos= vec_createVectorXY(600,350);
@@ -41,18 +43,18 @@ int main()
         SDL_RenderFillRect(screenRender, NULL);
 
 
-    SDL_SetRenderDrawColor(screenRender, 255, 255, 255, SDL_ALPHA_TRANSPARENT);
+        SDL_SetRenderDrawColor(screenRender, 255, 255, 255, SDL_ALPHA_TRANSPARENT);
 
-    //Fais des trucs
-    Vector tmpVec = {.x = 500, .y = 500};
-    charge_t tmpCharge = {.q = 0.0000001, .pos = tmpVec};
-    charges[0] = tmpCharge;
+        //Fais des trucs
+        draw_charges(screenRender,charges,2,0,0,200,200,rotate);
 
-    Vector tmpVec2 = {.x = 525, .y = 475};
-    Vector result = {.x = 0, .y = 0};
-    compute_total_normalized_e(charges, 1, tmpVec2, 1, &result);
-    vec_print(result, "Result : ");
-    draw_charges(screenRender,charges,2,0,0,200,200,rotate);
+        for (int i = 0; i < LINES_NUMBER; i++) {
+            double x = charges[0].pos.x + (CHARGE_RADIUS + spacing) * cos((2*PI)/LINES_NUMBER * i);
+            double y = charges[0].pos.y + (CHARGE_RADIUS + spacing) * sin((2*PI)/LINES_NUMBER * i);
+            Vector pos0 = {.x= x, .y = y};
+            draw_field_line(screenRender, charges, 2, DELTA_HOP, pos0, 0, WIN_WIDTH, 0, WIN_HEIGHT);
+        }
+        
 
         SDL_RenderPresent(screenRender);
 
