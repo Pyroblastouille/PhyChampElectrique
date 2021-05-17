@@ -30,11 +30,15 @@ int main()
     int running = 1;
     win = SDL_CreateWindow("Champ Electriques", 700, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, 0);
     screenRender = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED);
+    double rotate = 0;
+    double rotateIncrement = PI/2400;
 
-    SDL_RenderClear(screenRender);
-    //met la couleur de l'arrière plan à noir
-    SDL_SetRenderDrawColor(screenRender, 0, 0, 0, SDL_ALPHA_TRANSPARENT);
-    SDL_RenderFillRect(screenRender, NULL);
+    while (running)
+    {
+        SDL_RenderClear(screenRender);
+        //met la couleur de l'arrière plan à noir
+        SDL_SetRenderDrawColor(screenRender, 0, 0, 0, SDL_ALPHA_TRANSPARENT);
+        SDL_RenderFillRect(screenRender, NULL);
 
 
     SDL_SetRenderDrawColor(screenRender, 255, 255, 255, SDL_ALPHA_TRANSPARENT);
@@ -48,12 +52,11 @@ int main()
     Vector result = {.x = 0, .y = 0};
     compute_total_normalized_e(charges, 1, tmpVec2, 1, &result);
     vec_print(result, "Result : ");
-    draw_charges(screenRender,charges,2,0,0,200,200);
+    draw_charges(screenRender,charges,2,0,0,200,200,rotate);
 
-    SDL_RenderPresent(screenRender);
+        SDL_RenderPresent(screenRender);
 
-    while (running)
-    {
+        rotate += rotateIncrement;
         while (SDL_PollEvent(&event))
         {
             switch (event.type)

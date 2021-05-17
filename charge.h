@@ -37,7 +37,7 @@ double x1, double y0, double y1);
 // A circle with minus sign for negative charges
 // A circle with a plus sign for positive charges
 void draw_charges(SDL_Renderer *context, charge_t *charges,
-int num_charges, double x0, double x1, double y0, double y1);
+int num_charges, double x0, double x1, double y0, double y1,double rotation);
 
 
 #endif
