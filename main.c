@@ -10,6 +10,7 @@
 #include "draw.h"
 #include "utils.h"
 #include <time.h>
+#include <float.h>
 
 SDL_Window *win = NULL;
 SDL_Renderer *screenRender = NULL;
@@ -40,9 +41,18 @@ int main()
         SDL_RenderFillRect(screenRender, NULL);
 
 
-        SDL_SetRenderDrawColor(screenRender, 255, 255,255, SDL_ALPHA_TRANSPARENT);
+    SDL_SetRenderDrawColor(screenRender, 255, 255, 255, SDL_ALPHA_TRANSPARENT);
 
-        draw_charges(screenRender,charges,2,0,0,200,200,rotate);
+    //Fais des trucs
+    Vector tmpVec = {.x = 500, .y = 500};
+    charge_t tmpCharge = {.q = 0.0000001, .pos = tmpVec};
+    charges[0] = tmpCharge;
+
+    Vector tmpVec2 = {.x = 525, .y = 475};
+    Vector result = {.x = 0, .y = 0};
+    compute_total_normalized_e(charges, 1, tmpVec2, 1, &result);
+    vec_print(result, "Result : ");
+    draw_charges(screenRender,charges,2,0,0,200,200,rotate);
 
         SDL_RenderPresent(screenRender);
 

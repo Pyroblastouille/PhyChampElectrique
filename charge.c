@@ -67,6 +67,7 @@ bool compute_total_normalized_e(charge_t *charges, int num_charges, Vector p, do
 
         *e = vec_add(*e, tmp);
     }
+    
     *e = vec_mult(*e, 1/vec_norm(*e));
 
     return true;
