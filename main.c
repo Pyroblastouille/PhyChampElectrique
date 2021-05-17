@@ -31,8 +31,9 @@ int main()
     win = SDL_CreateWindow("Champ Electriques", 700, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, 0);
     screenRender = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED);
     double rotate = 0;
-    double rotateIncrement = PI/2400;
-
+    double rotateIncrement = PI/12000;
+    int x = 50,y = 50;
+    
     while (running)
     {
         SDL_RenderClear(screenRender);
@@ -41,22 +42,37 @@ int main()
         SDL_RenderFillRect(screenRender, NULL);
 
 
-    SDL_SetRenderDrawColor(screenRender, 255, 255, 255, SDL_ALPHA_TRANSPARENT);
 
     //Fais des trucs
-    Vector tmpVec = {.x = 500, .y = 500};
+    Uint32 mouseState =   SDL_GetMouseState(&x,&y);
+    Vector tmpVec = vec_createVectorXY(x,y);
     charge_t tmpCharge = {.q = 0.0000001, .pos = tmpVec};
     charges[0] = tmpCharge;
 
     Vector tmpVec2 = {.x = 525, .y = 475};
     Vector result = {.x = 0, .y = 0};
     compute_total_normalized_e(charges, 1, tmpVec2, 1, &result);
-    vec_print(result, "Result : ");
+    int r = 255,g=255,b=255;
+    if(mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)){    
+        g = 0;
+
+    }
+    if (mouseState & SDL_BUTTON(SDL_BUTTON_RIGHT))
+    {
+        b = 0;
+    }
+    if (mouseState & SDL_BUTTON(SDL_BUTTON_MIDDLE))
+    {
+        r = 0;
+    }
+    
+    SDL_SetRenderDrawColor(screenRender, r,g,b, SDL_ALPHA_TRANSPARENT);
     draw_charges(screenRender,charges,2,0,0,200,200,rotate);
 
         SDL_RenderPresent(screenRender);
 
         rotate += rotateIncrement;
+
         while (SDL_PollEvent(&event))
         {
             switch (event.type)

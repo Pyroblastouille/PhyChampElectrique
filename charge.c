@@ -17,23 +17,23 @@ void draw_charges(SDL_Renderer *context, charge_t *charges,int num_charges, doub
         gfx_draw_circle(context,charges[i].pos.x,charges[i].pos.y,CHARGE_RADIUS);
         if(charges[i].q != 0){
 
-            int x0 = charges[i].pos.x-lineSize*cos(rotation);
-            int y0  = charges[i].pos.y+lineSize*sin(rotation);
+            int ix0 = charges[i].pos.x-lineSize*cos(rotation);
+            int iy0  = charges[i].pos.y+lineSize*sin(rotation);
 
-            int x1 = charges[i].pos.x+lineSize*cos(rotation);
-            int y1 = charges[i].pos.y-lineSize*sin(rotation);
+            int ix1 = charges[i].pos.x+lineSize*cos(rotation);
+            int iy1 = charges[i].pos.y-lineSize*sin(rotation);
             
-            gfx_draw_line(context,x0,y0,x1,y1);
+            gfx_draw_line(context,ix0,iy0,ix1,iy1);
         }
         if(charges[i].q > 0)
         {
-            int x0 = charges[i].pos.x-lineSize*cos(rotation+PI/2);
-            int y0  = charges[i].pos.y+lineSize*sin(rotation+PI/2);
+            int ix0 = charges[i].pos.x-lineSize*cos(rotation+PI/2);
+            int iy0  = charges[i].pos.y+lineSize*sin(rotation+PI/2);
 
-            int x1 = charges[i].pos.x+lineSize*cos(rotation+PI/2);
-            int y1 = charges[i].pos.y-lineSize*sin(rotation+PI/2);
+            int ix1 = charges[i].pos.x+lineSize*cos(rotation+PI/2);
+            int iy1 = charges[i].pos.y-lineSize*sin(rotation+PI/2);
             
-            gfx_draw_line(context,x0,y0,x1,y1);
+            gfx_draw_line(context,ix0,iy0,ix1,iy1);
         }
     }
 }
