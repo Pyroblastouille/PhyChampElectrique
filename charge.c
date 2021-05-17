@@ -4,6 +4,8 @@
 #include "draw.h"
 #include "utils.h"
 #include "main.h"
+#include "vector.h"
+#include <math.h>
 
 // Draw all the charges
 // A circle with minus sign for negative charges
@@ -22,8 +24,6 @@ void draw_charges(SDL_Renderer *context, charge_t *charges,int num_charges, doub
         }
     }
 }
-#include "vector.h"
-#include <math.h>
 
 bool compute_e(charge_t c, Vector p, double eps, Vector *e){
     double k = 8.988* pow(10, 9);
