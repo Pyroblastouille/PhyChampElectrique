@@ -1,13 +1,14 @@
-#define WIN_WIDTH 100
-#define WIN_HEIGHT 100
+
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_timer.h>
 
+#include "main.h"
 #include "vector.h"
 #include "charge.h"
 #include "draw.h"
+#include "utils.h"
 #include <time.h>
 #include <float.h>
 
@@ -18,6 +19,11 @@ SDL_Event event;
 
 int main()
 {
+    charge_t charges[2];
+    charges[0].pos = vec_createVectorXY(50,50);
+    charges[0].q = 1;
+    charges[1].pos= vec_createVectorXY(600,350);
+    charges[1].q = -1;
 
     //Déclaration de la fenêtre SDL
     srand(0);
@@ -34,8 +40,6 @@ int main()
     SDL_SetRenderDrawColor(screenRender, 255, 255, 255, SDL_ALPHA_TRANSPARENT);
 
     //Fais des trucs
-    charge_t charges[1];
-
     Vector tmpVec = {.x = 500, .y = 500};
     charge_t tmpCharge = {.q = 0.0000001, .pos = tmpVec};
     charges[0] = tmpCharge;
@@ -44,6 +48,7 @@ int main()
     Vector result = {.x = 0, .y = 0};
     compute_total_normalized_e(charges, 1, tmpVec2, 1, &result);
     vec_print(result, "Result : ");
+    draw_charges(screenRender,charges,2,0,0,200,200);
 
     SDL_RenderPresent(screenRender);
 

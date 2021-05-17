@@ -1,8 +1,8 @@
 CC := gcc
 CFLAGS := --std=c99 -Wall -Wextra -lm -lSDL2 -ISDL2
-HDRS := vector.h draw.h charge.h
+HDRS := vector.h draw.h charge.h utils.h main.h
 
-SRCS := main.c vector.c draw.c charge.c
+SRCS := main.c vector.c draw.c charge.c utils.c
 
 OBJS := $(SRCS:.c=.o)
 
