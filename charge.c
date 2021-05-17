@@ -10,17 +10,30 @@
 // Draw all the charges
 // A circle with minus sign for negative charges
 // A circle with a plus sign for positive charges
-void draw_charges(SDL_Renderer *context, charge_t *charges,int num_charges, double x0, double x1, double y0, double y1){
+void draw_charges(SDL_Renderer *context, charge_t *charges,int num_charges, double x0, double x1, double y0, double y1,double rotation){
+    int lineSize = CHARGE_RADIUS*0.5;
     for (int i = 0; i < num_charges; i++)
     {
         gfx_draw_circle(context,charges[i].pos.x,charges[i].pos.y,CHARGE_RADIUS);
         if(charges[i].q != 0){
-        gfx_draw_line(context,charges[i].pos.x-CHARGE_RADIUS,charges[i].pos.y,charges[i].pos.x+CHARGE_RADIUS,charges[i].pos.y);
 
+            int x0 = charges[i].pos.x-lineSize*cos(rotation);
+            int y0  = charges[i].pos.y+lineSize*sin(rotation);
+
+            int x1 = charges[i].pos.x+lineSize*cos(rotation);
+            int y1 = charges[i].pos.y-lineSize*sin(rotation);
+            
+            gfx_draw_line(context,x0,y0,x1,y1);
         }
         if(charges[i].q > 0)
         {
-            gfx_draw_line(context,charges[i].pos.x,charges[i].pos.y-CHARGE_RADIUS,charges[i].pos.x,charges[i].pos.y+CHARGE_RADIUS);
+            int x0 = charges[i].pos.x-lineSize*cos(rotation+PI/2);
+            int y0  = charges[i].pos.y+lineSize*sin(rotation+PI/2);
+
+            int x1 = charges[i].pos.x+lineSize*cos(rotation+PI/2);
+            int y1 = charges[i].pos.y-lineSize*sin(rotation+PI/2);
+            
+            gfx_draw_line(context,x0,y0,x1,y1);
         }
     }
 }
