@@ -29,7 +29,7 @@ double eps, Vector *e);
 // starting from pos0.
 // Returns false if pos0 is not a valid position
 // (for example if pos0 is too close to a charge).
-static bool draw_field_line(SDL_Renderer *ctxt, charge_t *charges,
+bool draw_field_line(SDL_Renderer *context, charge_t *charges,
 int num_charges, double dx, Vector pos0, double x0,
 double x1, double y0, double y1);
 

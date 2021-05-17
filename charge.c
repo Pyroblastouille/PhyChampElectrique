@@ -25,6 +25,30 @@ void draw_charges(SDL_Renderer *context, charge_t *charges,int num_charges, doub
     }
 }
 
+// Compute and then draw all the points belonging to a field line,
+// starting from pos0.
+// Returns false if pos0 is not a valid position
+// (for example if pos0 is too close to a charge).
+bool draw_field_line(SDL_Renderer *context, charge_t *charges, int num_charges, double dx, Vector pos0, double x0, double x1, double y0, double y1){
+    double eps = CHARGE_RADIUS;
+
+    Vector currentPos = pos0;
+    Vector direction = {.x= 0, .y = 0};
+    while(compute_total_normalized_e(charges, num_charges, currentPos, eps, &direction)){
+
+        Vector hop = vec_mult(direction, dx);
+        Vector nextPos = vec_add(currentPos, hop);
+
+        gfx_draw_line(context, currentPos.x, currentPos.y, nextPos.x, nextPos.y);
+
+        currentPos = nextPos;
+
+        if(currentPos.x > x1 || currentPos.x < x0 || currentPos.y > y1 || currentPos.y < y0){
+            return false;
+        }
+    }
+}
+
 bool compute_e(charge_t c, Vector p, double eps, Vector *e){
     double k = 8.988* pow(10, 9);
 
