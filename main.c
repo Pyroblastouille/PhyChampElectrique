@@ -44,6 +44,7 @@ int main()
         SDL_RenderFillRect(screenRender, NULL);
 
 
+<<<<<<< HEAD
         SDL_SetRenderDrawColor(screenRender, 255, 255, 255, SDL_ALPHA_TRANSPARENT);
 
         //Fais des trucs
@@ -75,6 +76,34 @@ int main()
         
         SDL_SetRenderDrawColor(screenRender, r,g,b, SDL_ALPHA_TRANSPARENT);
         draw_charges(screenRender,charges,2,0,0,200,200,rotate);
+=======
+
+    //Fais des trucs
+    Uint32 mouseState =   SDL_GetMouseState(&x,&y);
+    Vector tmpVec = vec_createVectorXY(x,y);
+    charge_t tmpCharge = {.q = 0.0000001, .pos = tmpVec};
+    charges[0] = tmpCharge;
+
+    Vector tmpVec2 = {.x = 525, .y = 475};
+    Vector result = {.x = 0, .y = 0};
+    compute_total_normalized_e(charges, 1, tmpVec2, 1, &result);
+    int r = 255,g=255,b=255;
+    if(mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)){    
+        g = 0;
+
+    }
+    if (mouseState & SDL_BUTTON(SDL_BUTTON_RIGHT))
+    {
+        b = 0;
+    }
+    if (mouseState & SDL_BUTTON(SDL_BUTTON_MIDDLE))
+    {
+        r = 0;
+    }
+    
+    SDL_SetRenderDrawColor(screenRender, r,g,b, SDL_ALPHA_TRANSPARENT);
+    draw_charges(screenRender,charges,2,0,0,200,200,rotate);
+>>>>>>> 381322fa4d007242a2a3af5a58cb19b57e3549c9
 
         SDL_RenderPresent(screenRender);
 

@@ -34,6 +34,7 @@ void draw_charges(SDL_Renderer *context, charge_t *charges,int num_charges, doub
             int iy1 = charges[i].pos.y-lineSize*sin(rotation+PI/2);
             
             gfx_draw_line(context,ix0,iy0,ix1,iy1);
+<<<<<<< HEAD
         }
     }
 }
@@ -58,6 +59,8 @@ bool draw_field_line(SDL_Renderer *context, charge_t *charges, int num_charges, 
 
         if(currentPos.x > x1 || currentPos.x < x0 || currentPos.y > y1 || currentPos.y < y0){
             return false;
+=======
+>>>>>>> 381322fa4d007242a2a3af5a58cb19b57e3549c9
         }
     }
 }
