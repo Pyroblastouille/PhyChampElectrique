@@ -14,26 +14,28 @@ void draw_charges(SDL_Renderer *context, charge_t *charges,int num_charges, doub
     int lineSize = CHARGE_RADIUS*0.5;
     for (int i = 0; i < num_charges; i++)
     {
+        if(!(charges[i].pos.x > x1 || charges[i].pos.x < x0 || charges[i].pos.y > y1 || charges[i].pos.y < y0)){
         gfx_draw_circle(context,charges[i].pos.x,charges[i].pos.y,CHARGE_RADIUS);
         if(charges[i].q != 0){
 
-            int x0 = charges[i].pos.x-lineSize*cos(rotation);
-            int y0  = charges[i].pos.y+lineSize*sin(rotation);
+            int linex0 = charges[i].pos.x-lineSize*cos(rotation);
+            int liney0  = charges[i].pos.y+lineSize*sin(rotation);
 
-            int x1 = charges[i].pos.x+lineSize*cos(rotation);
-            int y1 = charges[i].pos.y-lineSize*sin(rotation);
+            int linex1 = charges[i].pos.x+lineSize*cos(rotation);
+            int liney1 = charges[i].pos.y-lineSize*sin(rotation);
             
-            gfx_draw_line(context,x0,y0,x1,y1);
+            gfx_draw_line(context,linex0,liney0,linex1,liney1);
         }
         if(charges[i].q > 0)
         {
-            int x0 = charges[i].pos.x-lineSize*cos(rotation+PI/2);
-            int y0  = charges[i].pos.y+lineSize*sin(rotation+PI/2);
+            int linex0 = charges[i].pos.x-lineSize*cos(rotation+PI/2);
+            int liney0  = charges[i].pos.y+lineSize*sin(rotation+PI/2);
 
-            int x1 = charges[i].pos.x+lineSize*cos(rotation+PI/2);
-            int y1 = charges[i].pos.y-lineSize*sin(rotation+PI/2);
+            int linex1 = charges[i].pos.x+lineSize*cos(rotation+PI/2);
+            int liney1 = charges[i].pos.y-lineSize*sin(rotation+PI/2);
             
-            gfx_draw_line(context,x0,y0,x1,y1);
+            gfx_draw_line(context,linex0,liney0,linex1,liney1);
+        }
         }
     }
 }

@@ -8,7 +8,7 @@
 #define LOW_HEIGHT_BOUND -100000
 #define HIGH_HEIGHT_BOUND 100000
 #define CHARGE_RADIUS 30
-#define LINES_NUMBER 100
+#define LINES_NUMBER 1000
 #define DELTA_HOP 1
 
 #endif
