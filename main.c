@@ -63,7 +63,7 @@ int main()
                 double x = charges[j].pos.x + (CHARGE_RADIUS + spacing) * cos((2*PI)/LINES_NUMBER * i);
                 double y = charges[j].pos.y + (CHARGE_RADIUS + spacing) * sin((2*PI)/LINES_NUMBER * i);
                 Vector pos0 = {.x= x, .y = y};
-                draw_field_line(screenRender, charges, 2, DELTA_HOP, pos0, LOW_WIDTH_BOUND, HIGH_WIDTH_BOUND, LOW_HEIGHT_BOUND, HIGH_HEIGHT_BOUND);
+                draw_field_line(screenRender, charges, num_charges, DELTA_HOP, pos0, LOW_WIDTH_BOUND, HIGH_WIDTH_BOUND, LOW_HEIGHT_BOUND, HIGH_HEIGHT_BOUND);
             }
         }
         
