@@ -1,5 +1,6 @@
 #ifndef CHARGE_C
 #define CHARGE_C
+#define MAX_HOP 100000
 #include "charge.h"
 #include "draw.h"
 #include "utils.h"
@@ -45,6 +46,7 @@ void draw_charges(SDL_Renderer *context, charge_t *charges,int num_charges, doub
 // Returns false if pos0 is not a valid position
 // (for example if pos0 is too close to a charge).
 bool draw_field_line(SDL_Renderer *context, charge_t *charges, int num_charges, double dx, Vector pos0, double x0, double x1, double y0, double y1){
+    int currentHop = 0;
     double eps = CHARGE_RADIUS;
 
     Vector currentPos = pos0;
@@ -58,9 +60,10 @@ bool draw_field_line(SDL_Renderer *context, charge_t *charges, int num_charges, 
 
         currentPos = nextPos;
 
-        if(currentPos.x > x1 || currentPos.x < x0 || currentPos.y > y1 || currentPos.y < y0){
+        if(currentPos.x > x1 || currentPos.x < x0 || currentPos.y > y1 || currentPos.y < y0 || currentHop > MAX_HOP){
             return false;
         }
+        currentHop++;
     }
 
     return true;
