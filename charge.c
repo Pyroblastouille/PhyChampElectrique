@@ -60,6 +60,8 @@ bool draw_field_line(SDL_Renderer *context, charge_t *charges, int num_charges, 
             return false;
         }
     }
+
+    return true;
 }
 
 bool compute_e(charge_t c, Vector p, double eps, Vector *e){

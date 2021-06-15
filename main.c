@@ -42,7 +42,6 @@ int main()
         SDL_SetRenderDrawColor(screenRender, 0, 0, 0, SDL_ALPHA_TRANSPARENT);
         SDL_RenderFillRect(screenRender, NULL);
 
-
         SDL_SetRenderDrawColor(screenRender, 255, 255, 255, SDL_ALPHA_TRANSPARENT);
 
         //Fais des trucs
@@ -52,10 +51,9 @@ int main()
             double x = charges[0].pos.x + (CHARGE_RADIUS + spacing) * cos((2*PI)/LINES_NUMBER * i);
             double y = charges[0].pos.y + (CHARGE_RADIUS + spacing) * sin((2*PI)/LINES_NUMBER * i);
             Vector pos0 = {.x= x, .y = y};
-            draw_field_line(screenRender, charges, 2, DELTA_HOP, pos0, 0, WIN_WIDTH, 0, WIN_HEIGHT);
+            draw_field_line(screenRender, charges, 2, DELTA_HOP, pos0, LOW_WIDTH_BOUND, HIGH_WIDTH_BOUND, LOW_HEIGHT_BOUND, HIGH_HEIGHT_BOUND);
         }
         
-
         SDL_RenderPresent(screenRender);
 
         rotate += rotateIncrement;
