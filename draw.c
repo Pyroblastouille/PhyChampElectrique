@@ -42,7 +42,15 @@ void gfx_draw_circle(SDL_Renderer *render, int xc, int yc, int r)
         }
     }
 }
-
+/**
+ * @brief Dessine une ligne de x0,y0 à x1,y1
+ * 
+ * @param render Un pointeur sur l'objet de rendu
+ * @param x0 coordonnée x du premier point
+ * @param y0 coordonnée y du premier point
+ * @param x1 coordonnée x du second point
+ * @param y1 coordonnée y du second point
+ **/ 
 void gfx_draw_line(SDL_Renderer *render, int x0, int y0, int x1, int y1)
 {
     int dy = y1 - y0;
