@@ -2,6 +2,10 @@
 #define DRAW_C
 #include "draw.h"
 
+/// Dessine un cercle sur le renderer
+// int xc = centre du cercle sur l'axe x
+// int yc = centre du cercle sur l'axe y
+// int r  = rayon du cercle
 void gfx_draw_circle(SDL_Renderer *render, int xc, int yc, int r)
 {
     int x = 0;
@@ -9,6 +13,7 @@ void gfx_draw_circle(SDL_Renderer *render, int xc, int yc, int r)
     int d = r - 1;
     while (y >= x)
     {
+        // Dessine tous les octants
         SDL_RenderDrawPoint(render, xc + x, yc + y); //2eme octant
         SDL_RenderDrawPoint(render, xc + y, yc + x); //1er octant
         SDL_RenderDrawPoint(render, xc + x, yc - y);
@@ -17,6 +22,8 @@ void gfx_draw_circle(SDL_Renderer *render, int xc, int yc, int r)
         SDL_RenderDrawPoint(render, xc - y, yc + x);
         SDL_RenderDrawPoint(render, xc - x, yc - y);
         SDL_RenderDrawPoint(render, xc - y, yc - x);
+
+        //Met à jour les valeurs pour l'itération suivante
         if (2 * x <= d)
         {
             x += 1;

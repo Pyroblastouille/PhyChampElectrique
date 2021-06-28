@@ -2,11 +2,11 @@
 #define CHARGE_C
 #include "charge.h"
 #include "draw.h"
-#include "utils.h"
 #include "main.h"
 #include "vector.h"
 #include <math.h>
 
+#define MAX_HOP (5000)
 // Draw all the charges
 // A circle with minus sign for negative charges
 // A circle with a plus sign for positive charges
