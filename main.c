@@ -8,7 +8,6 @@
 #include "vector.h"
 #include "charge.h"
 #include "draw.h"
-#include "utils.h"
 #include <time.h>
 #include <float.h>
 
@@ -19,23 +18,24 @@ SDL_Event event;
 
 int main()
 {   
+    time_t t;
+    srand((unsigned)time(&t));
+
     double spacing = 0.01;
-    int num_charges = 4;
+    int num_charges = rand()%(MAX_CHARGES-MIN_CHARGES) + MIN_CHARGES;
     charge_t charges[num_charges];
-    charges[0].pos = vec_createVectorXY(CHARGE_RADIUS,WIN_HEIGHT/2);
-    charges[0].q = 1;
-    charges[1].pos= vec_createVectorXY(WIN_WIDTH/2,CHARGE_RADIUS);
-    charges[1].q = -1;
-    charges[2].pos= vec_createVectorXY(WIN_WIDTH-CHARGE_RADIUS,WIN_HEIGHT/2);
-    charges[2].q = 1;
-    charges[3].pos= vec_createVectorXY(WIN_WIDTH/2,WIN_HEIGHT- CHARGE_RADIUS);
-    charges[3].q = -1;
+    for (size_t i = 0; i < num_charges; i++)
+    {
+        charges[i].pos = vec_createVectorXY(rand()%WIN_WIDTH,rand()%WIN_HEIGHT);
+        charges[i].q = (rand()%(MAX_CHARGES-MIN_CHARGES) + MIN_CHARGES)*(rand()%2 == 0?-1:1);
+    }
 
     //Déclaration de la fenêtre SDL
-    srand(0);
     int running = 1;
-    win = SDL_CreateWindow("Champ Electriques", 700, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, 0);
+    win = SDL_CreateWindow("Champs Electriques", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, 0);
     screenRender = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED);
+
+    //Variables pour la rotation des signes
     double rotate = 0;
     double rotateIncrement = PI/4;
 

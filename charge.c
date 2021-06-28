@@ -2,7 +2,6 @@
 #define CHARGE_C
 #include "charge.h"
 #include "draw.h"
-#include "utils.h"
 #include "main.h"
 #include "vector.h"
 #include <math.h>
